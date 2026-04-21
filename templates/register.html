@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>注册 - 学生管理系统</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light d-flex align-items-center" style="height: 100vh;">
+  <div class="card mx-auto shadow" style="width: 350px; border-radius: 15px;">
+    <div class="card-body p-4">
+      <h3 class="text-center mb-4">📝 账号注册</h3>
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label">用户名</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">密码</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100 mb-3">注册账号</button>
+        <div class="text-center">
+          <a href="/login" class="text-decoration-none small text-muted">已有账号？返回登录</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

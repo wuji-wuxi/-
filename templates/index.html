@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>学生档案管理</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand">🎓 学生档案管理系统</span>
+      <div class="d-flex align-items-center text-white">
+        <span class="me-3">欢迎你, {{ username }}</span>
+        <a href="/logout" class="btn btn-outline-danger btn-sm">退出</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container bg-white p-4 rounded shadow-sm">
+    <form action="/add" method="POST" class="row g-3 mb-4 border-bottom pb-4">
+      <div class="col-md-3"><input type="text" name="student_id" class="form-control" placeholder="学号" required></div>
+      <div class="col-md-2"><input type="text" name="name" class="form-control" placeholder="姓名" required></div>
+      <div class="col-md-3"><input type="text" name="major" class="form-control" placeholder="专业"></div>
+      <div class="col-md-2">
+        <select name="status" class="form-select">
+          <option value="在校">在校</option>
+          <option value="毕业">毕业</option>
+          <option value="休学">休学</option>
+        </select>
+      </div>
+      <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">录入学生</button></div>
+    </form>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>专业</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in students %}
+        <tr>
+          <td>{{ s.student_id }}</td>
+          <td>{{ s.name }}</td>
+          <td>{{ s.major }}</td>
+          <td><span class="badge {{ 'bg-success' if s.status=='在校' else 'bg-secondary' }}">{{ s.status }}</span></td>
+          <td><a href="/delete/{{ s.id }}" class="btn btn-sm btn-outline-danger"
+              onclick="return confirm('确定删除？')">删除</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
